@@ -23,7 +23,7 @@ jobs:
           mv openwrt-* openwrt
           
       - name: Adjust location source
-        run: mv -t openwrt/package/ ext-buttons ext-rooter-basic ext-sms rqmi rmbim && ls -a openwrt/package/
+        run: mv -t openwrt/package/ ext-buttons ext-rooter-basic ext-sms rqmi rmbim luci-proto-mbim luci-proto-3x && ls -a openwrt/package/
       
       - name: Updating feeds && Installing feeds
         run: |
@@ -42,6 +42,8 @@ jobs:
           find bin/ -type f -name '*ext-sms*' -exec mv -t ../packed {} +
           find bin/ -type f -name '*rqmi*' -exec mv -t ../packed {} +
           find bin/ -type f -name '*rmbim*' -exec mv -t ../packed {} +
+          find bin/ -type f -name '*luci-proto-mbim*' -exec mv -t ../packed {} +
+          find bin/ -type f -name '*luci-proto-3x*' -exec mv -t ../packed {} +
          
       - name: Upload Package to Releases
         uses: ncipollo/release-action@main
