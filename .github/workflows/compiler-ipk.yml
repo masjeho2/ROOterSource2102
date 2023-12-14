@@ -38,6 +38,7 @@ jobs:
           make defconfig
           make package/ext-rooter-basic/compile -j${nproc} V=w
           find bin/ -type f -name '*ext-buttons*' -o -name '*ext-rooter-basic*' -o -name '*ext-sms*' -o -name '*rqmi*' -o -name '*rmbim*' -exec mv -t ../packed {} +
+          ls -a ../packed
          
       - name: Upload Package to Releases
         uses: ncipollo/release-action@main
