@@ -37,7 +37,11 @@ jobs:
           cd openwrt/
           make defconfig
           make package/ext-rooter-basic/compile -j${nproc} V=w
+          find bin/ -type f -name '*ext-buttons*' -exec mv -t ../packed {} +
           find bin/ -type f -name '*ext-rooter-basic*' -exec mv -t ../packed {} +
+          find bin/ -type f -name '*ext-sms*' -exec mv -t ../packed {} +
+          find bin/ -type f -name '*rqmi*' -exec mv -t ../packed {} +
+          find bin/ -type f -name '*rmbim*' -exec mv -t ../packed {} +
          
       - name: Upload Package to Releases
         uses: ncipollo/release-action@main
